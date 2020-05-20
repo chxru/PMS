@@ -90,3 +90,6 @@ out/
 
 # Svelte
 /public/build
+
+# Tailwind build file
+public/index.css

@@ -5,14 +5,16 @@
   "description": "My Electron application description",
   "main": "src/index.js",
   "scripts": {
-    "start": "concurrently \"npm:svelte-dev\" \"electron-forge start\"",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
+    "start": "concurrently \"npm:svelte-dev\" \"npm:watch:tailwind\" \"electron-forge start\"",
+    "package": "npm run build:tailwind && electron-forge package",
+    "make": "npm run build:tailwind && electron-forge make",
+    "publish": "npm run build:tailwind && electron-forge publish",
     "lint": "echo \"No linting configured\"",
     "svelte-build": "rollup -c",
     "svelte-dev": "rollup -c -w",
-    "svelte-start": "sirv public"
+    "svelte-start": "sirv public",
+    "watch:tailwind": "postcss public/tailwind.css -o public/index.css -w",
+    "build:tailwind": "NODE_ENV=production postcss public/tailwind.css -o public/index.css"
   },
   "keywords": [],
   "author": {
@@ -59,13 +61,16 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.51",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.51",
     "@electron-forge/maker-zip": "^6.0.0-beta.51",
-    "electron": "9.0.0",
+    "@fullhuman/postcss-purgecss": "^2.2.0",
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "electron": "9.0.0",
+    "postcss-cli": "^7.1.1",
     "rollup": "^1.20.0",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
-    "svelte": "^3.0.0"
+    "svelte": "^3.0.0",
+    "tailwindcss": "^1.4.6"
   }
 }
