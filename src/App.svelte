@@ -1,12 +1,25 @@
 <script>
-  export let name;
+  // iews
+  import Home from "./views/Home.svelte";
+  import AddPatient from "./views/AddPatient.svelte";
+
+  // components
+  import Sidebar from "./components/sidebar/Sidebar.svelte";
+
+  // handling view
+  let currentView = "home";
+  const changeView = event => {
+    currentView = event.detail.route;
+  };
 </script>
 
-<main>
-  <h1 class="text-2xl">Hello {name}!</h1>
-  <p>
-    Visit the
-    <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps.
-  </p>
-</main>
+<div class="relative flex flex-row w-full h-screen">
+  <Sidebar on:menuClick={changeView} />
+  <div class="ml-12">
+    {#if currentView == 'home'}
+      <Home />
+    {:else if currentView == 'add_patient'}
+      <AddPatient />
+    {/if}
+  </div>
+</div>
