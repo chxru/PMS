@@ -93,3 +93,6 @@ out/
 
 # Tailwind build file
 public/index.css
+
+# Nedb
+data/

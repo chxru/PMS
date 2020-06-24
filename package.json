@@ -10,6 +10,7 @@
     "make": "npm run build:tailwind && electron-forge make",
     "publish": "npm run build:tailwind && electron-forge publish",
     "lint": "echo \"No linting configured\"",
+    "forge-start": "electron-forge start",
     "svelte-build": "rollup -c",
     "svelte-dev": "rollup -c -w",
     "svelte-start": "sirv public",
@@ -53,6 +54,7 @@
     "concurrently": "^5.2.0",
     "electron-reload": "^1.5.0",
     "electron-squirrel-startup": "^1.0.0",
+    "nedb": "^1.8.0",
     "sirv-cli": "^0.4.4"
   },
   "devDependencies": {
