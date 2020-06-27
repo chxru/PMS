@@ -13,11 +13,18 @@
     "/": Home,
     "/addPatient": AddPatient
   };
+
+  let sidebarExpanded = true;
+  const toggleSidebar = evt => {
+    sidebarExpanded = evt.detail;
+  };
 </script>
 
 <div class="relative flex flex-row w-full h-screen">
-  <Sidebar />
-  <div class="ml-4 w-full mt-8">
+  <Sidebar on:toggleSidebar={toggleSidebar} />
+  <div
+    class=" w-full mt-8 pl-4 {sidebarExpanded ? 'ml-64' : 'ml-12'}
+    transition-all duration-300 ease-in-out">
     <Router {routes} />
   </div>
 </div>

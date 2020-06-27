@@ -1,10 +1,14 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import { replace } from "svelte-spa-router";
+
+  const dispatch = createEventDispatcher();
 
   // sidebar toggle
   let showSidebar = true;
   const toggleSidebar = () => {
     showSidebar = !showSidebar;
+    dispatch("toggleSidebar", showSidebar);
   };
 
   // menu item list
@@ -16,7 +20,7 @@
 
 <div
   class="flex flex-col items-center justify-between overflow-hidden {showSidebar ? 'w-64' : 'w-12'}
-  h-full bg-primary transition-all duration-300 ease-in-out">
+  h-full bg-primary transition-all duration-300 ease-in-out fixed">
   Sidebar
   <div>
     {#each menuItems as menuItem}
