@@ -4,6 +4,7 @@
   // views
   import Home from "./views/Home.svelte";
   import AddPatient from "./views/AddPatient.svelte";
+  import Search from "./views/Search.svelte";
 
   // components
   import Sidebar from "./components/sidebar/Sidebar.svelte";
@@ -11,7 +12,8 @@
   // routes
   const routes = {
     "/": Home,
-    "/addPatient": AddPatient
+    "/addPatient": AddPatient,
+    "/search": Search
   };
 
   let sidebarExpanded = true;

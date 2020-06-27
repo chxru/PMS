@@ -23,6 +23,13 @@ ipcMain.on("add-patient", (event, doc) => {
   });
 });
 
+ipcMain.on("search-by-name", (event, name) => {
+  PATIENT.find({ lname: new RegExp(name, "gi") }, (err, docs) => {
+    if (err) console.log(err);
+    event.reply("search-result-out", docs);
+  });
+});
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
