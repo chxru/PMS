@@ -17,7 +17,7 @@
 
 <div class="relative flex flex-row w-full h-screen">
   <Sidebar />
-  <div class="ml-4">
+  <div class="ml-4 w-full mt-8">
     <Router {routes} />
   </div>
 </div>
