@@ -16,16 +16,16 @@
     "/search": Search
   };
 
-  let sidebarExpanded = true;
+  let sidebarExpanded = false;
   const toggleSidebar = evt => {
     sidebarExpanded = evt.detail;
   };
 </script>
 
-<div class="relative flex flex-row w-full h-screen">
+<div class="relative flex flex-row w-full h-screen bg-background">
   <Sidebar on:toggleSidebar={toggleSidebar} />
   <div
-    class=" w-full mt-8 pl-4 {sidebarExpanded ? 'ml-64' : 'ml-12'}
+    class=" w-full mt-8 pl-4 {sidebarExpanded ? 'ml-64' : 'ml-16'}
     transition-all duration-300 ease-in-out">
     <Router {routes} />
   </div>

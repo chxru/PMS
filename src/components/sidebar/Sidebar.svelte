@@ -5,7 +5,7 @@
   const dispatch = createEventDispatcher();
 
   // sidebar toggle
-  let showSidebar = true;
+  let showSidebar = false;
   const toggleSidebar = () => {
     showSidebar = !showSidebar;
     dispatch("toggleSidebar", showSidebar);
@@ -20,20 +20,24 @@
 </script>
 
 <div
-  class="flex flex-col items-center justify-between overflow-hidden {showSidebar ? 'w-64' : 'w-12'}
-  h-full bg-primary transition-all duration-300 ease-in-out fixed">
-  Sidebar
+  class="flex flex-col overflow-hidden {showSidebar ? 'w-64 ' : 'w-16'} h-full
+  bg-foreground transition-all duration-300 ease-in-out fixed shadow-lg
+  justify-between py-2 items-center">
   <div>
     {#each menuItems as menuItem}
       <span
-        class="flex flex-row"
+        class="flex flex-row py-8"
         on:click={() => {
           replace(menuItem.path);
         }}>
-        <img src="./icons/{menuItem.icon}.svg" style="stroke: white;" alt="" />
-        {menuItem.display}
+        <img class="px-4" src="./icons/{menuItem.icon}.svg" alt="" />
+        <p class={showSidebar ? 'block' : 'hidden'}>{menuItem.display}</p>
       </span>
     {/each}
   </div>
-  <p on:click={toggleSidebar}>close</p>
+  <div on:click={toggleSidebar}>
+    <img
+      src={showSidebar ? './icons/chevron-left.svg' : './icons/chevron-right.svg'}
+      alt="sidebar toggle icon" />
+  </div>
 </div>
