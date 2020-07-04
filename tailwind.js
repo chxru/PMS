@@ -2,12 +2,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#363A57",
-        secondary: "#DCDEE5"
-      }
+        foreground: "#FFFFFF",
+        background: "#E9ECF3",
+      },
     },
   },
   variants: {},
   plugins: [],
-  purge: false // purging done by manually
-}
+  purge: false, // purging done by manually
+};
