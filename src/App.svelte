@@ -22,7 +22,7 @@
   };
 </script>
 
-<div class="relative flex flex-row w-full h-screen bg-background">
+<div class="relative flex flex-row w-full min-h-screen bg-background">
   <Sidebar on:toggleSidebar={toggleSidebar} />
   <div
     class=" w-full mt-8 pl-4 {sidebarExpanded ? 'ml-64' : 'ml-16'}
