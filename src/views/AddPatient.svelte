@@ -1,6 +1,9 @@
 <script>
   const { ipcRenderer } = require("electron");
 
+  import DatePicker from "smelte/src/components/DatePicker";
+  let selected;
+
   let doc = {
     initials: "",
     lname: "",
@@ -26,7 +29,13 @@
     job: "",
     gov_facilities: "",
     disease: "",
-    treatment_his: ""
+    treatment_his: { Clogapine: false, Depo: false, ECT: false },
+    last_clinic_visit: "",
+    informed_over_phone: "",
+    home_visit: "",
+    next_clinic_date: "",
+    hospital_admission: "",
+    remarks: ""
   };
 
   const addPatient = () => {
@@ -557,13 +566,119 @@
           for="grid-first-name">
           Treatment history
         </label>
+        <div class="flex flex-row justify-center">
+          <div class="w-1/3">
+            <input
+              class="mr-2 leading-tight"
+              type="checkbox"
+              bind:checked={doc.treatment_his['Clogapine']} />
+            <span class="text-sm">Clogapine</span>
+          </div>
+          <div class="w-1/3">
+            <input
+              class="mr-2 leading-tight"
+              type="checkbox"
+              bind:checked={doc.edu_status['Depo']} />
+            <span class="text-sm">Depo injection</span>
+          </div>
+          <div class="w-1/3">
+            <input
+              class="mr-2 leading-tight"
+              type="checkbox"
+              bind:checked={doc.edu_status['ECT']} />
+            <span class="text-sm">ECT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Last clinic visit -->
+    <div class="flex flex-wrap mb-6 -mx-3">
+      <div class="w-full px-3 mb-6 md:mb-0">
+        <label
+          class="block mb-2 text-xs font-bold tracking-wide text-gray-700
+          uppercase"
+          for="grid-first-name">
+          Last clinic visit
+        </label>
+        <DatePicker bind:value={doc.last_clinic_visit} />
+      </div>
+    </div>
+
+    <!-- Date of informed over phone -->
+    <div class="flex flex-wrap mb-6 -mx-3">
+      <div class="w-full px-3 mb-6 md:mb-0">
+        <label
+          class="block mb-2 text-xs font-bold tracking-wide text-gray-700
+          uppercase"
+          for="grid-first-name">
+          Informed over phone
+        </label>
+        <DatePicker bind:value={doc.informed_over_phone} />
+      </div>
+    </div>
+
+    <!-- Home visit -->
+    <div class="flex flex-wrap mb-6 -mx-3">
+      <div class="w-full px-3 mb-6 md:mb-0">
+        <label
+          class="block mb-2 text-xs font-bold tracking-wide text-gray-700
+          uppercase"
+          for="grid-first-name">
+          Home visit
+        </label>
+        <DatePicker bind:value={doc.home_visit} />
+      </div>
+    </div>
+
+    <!-- Hospital admission -->
+    <div class="flex flex-wrap mb-6 -mx-3">
+      <div class="w-full px-3 mb-6 md:mb-0">
+        <label
+          class="block mb-2 text-xs font-bold tracking-wide text-gray-700
+          uppercase"
+          for="grid-first-name">
+          Hospital admission
+        </label>
         <input
           class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200
           border border-gray-200 rounded appearance-none focus:outline-none
           focus:bg-white focus:border-gray-500"
           type="text"
-          placeholder="history, wip"
-          bind:value={doc.treatment_his} />
+          placeholder="Hospital admission"
+          bind:value={doc.hospital_admission} />
+      </div>
+    </div>
+
+    <!-- Next clinic date -->
+    <div class="flex flex-wrap mb-6 -mx-3">
+      <div class="w-full px-3 mb-6 md:mb-0">
+        <label
+          class="block mb-2 text-xs font-bold tracking-wide text-gray-700
+          uppercase"
+          for="grid-first-name">
+          Next clinic date
+        </label>
+        <DatePicker bind:value={doc.next_clinic_date} />
+      </div>
+    </div>
+
+    <!-- Remarks -->
+    <div class="flex flex-wrap mb-6 -mx-3">
+      <div class="w-full px-3 mb-6 md:mb-0">
+        <label
+          class="block mb-2 text-xs font-bold tracking-wide text-gray-700
+          uppercase"
+          for="grid-first-name">
+          Remarks
+        </label>
+        <input
+          class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200
+          border border-gray-200 rounded appearance-none focus:outline-none
+          focus:bg-white focus:border-gray-500"
+          type="text"
+          placeholder="Extra notes"
+          bind:value={doc.remarks} />
       </div>
     </div>
 
