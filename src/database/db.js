@@ -1,7 +1,7 @@
 const Datastore = require("nedb");
 const path = require("path");
 
-const { encrypt, decrypt } = require("./crypto");
+const { encryptPatientDB, decryptPatientDB } = require("./crypto");
 
 const db = {};
 
@@ -16,8 +16,8 @@ db.patients = new Datastore({
   filename: path.join(process.cwd(), "data", "patient.db"),
   autoload: true,
   timestampData: true,
-  afterSerialization: (doc) => encrypt(doc),
-  beforeDeserialization: (doc) => decrypt(doc),
+  afterSerialization: (doc) => encryptPatientDB(doc),
+  beforeDeserialization: (doc) => decryptPatientDB(doc),
 });
 
 exports.USER = db.users;

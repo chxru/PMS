@@ -1,7 +1,12 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
-const { PATIENT } = require("./database/db");
+const {
+  addPatient,
+  checkUnamePwd,
+  createUser,
+  searchByName,
+} = require("./util");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -15,20 +20,23 @@ require("electron-reload")(__dirname, {
   awaitWriteFinish: true,
 });
 
-// nedb
-ipcMain.on("add-patient", (event, doc) => {
-  PATIENT.insert(doc, (err, newDoc) => {
-    console.log(err);
-    console.log(newDoc);
-  });
-});
+/*
+When app starts, it search through user database to find users.
+If there isnt any users its mean app runs for initial time
+So app promots to create a user/super user.
 
-ipcMain.on("search-by-name", (event, name) => {
-  PATIENT.find({ lname: new RegExp(name, "gi") }, (err, docs) => {
-    if (err) console.log(err);
-    event.reply("search-result-out", docs);
-  });
-});
+When super user creates his/her account a secret key is also created
+First we search for super key, if it's exist promote login page
+If not super key found, promote super-user creating window
+
+For intial preview no super-user role will be created
+*/
+
+// ipc events
+ipcMain.on("add-patient", (event, doc) => addPatient(event, doc));
+ipcMain.on("check-uname-pwd", (event, doc) => checkUnamePwd(event, doc));
+ipcMain.on("create-user", (event, doc) => createUser(event, doc));
+ipcMain.on("search-by-name", (event, name) => searchByName(event, name));
 
 const createWindow = () => {
   // Create the browser window.

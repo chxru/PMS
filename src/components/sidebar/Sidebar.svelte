@@ -13,7 +13,7 @@
 
   // menu item list
   const menuItems = [
-    { path: "/", display: "Home", icon: "home" },
+    { path: "/home", display: "Home", icon: "home" },
     { path: "/search", display: "Search", icon: "search" },
     { path: "/addPatient", display: "Add Patient", icon: "plus-circle" }
   ];
