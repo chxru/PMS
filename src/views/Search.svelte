@@ -33,8 +33,12 @@
   </div>
 
   <!-- search result -->
-  <p>search result</p>
-  {#each searchResult as result}
-    <MediumCard data={result} />
-  {/each}
+  {#if searchResult.length != 0}
+    <p>search result</p>
+    <div class="flex flex-row flex-wrap">
+      {#each searchResult as result}
+        <MediumCard data={result} />
+      {/each}
+    </div>
+  {/if}
 </div>

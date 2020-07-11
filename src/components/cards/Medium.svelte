@@ -11,8 +11,12 @@
   </div>
   <div>
     <p>Drugs: {data.treatment_his}</p>
-    <p>Last visit: {data.last_clinic_visit}</p>
-    <p>Scheduled next visit: {data.next_clinic_date}</p>
+    <p>
+      Last visit: {data.last_clinic_visit.getMonth()} / {data.last_clinic_visit.getDate()}
+    </p>
+    <p>
+      Scheduled next visit: {data.next_clinic_date.getMonth()} / {data.next_clinic_date.getDate()}
+    </p>
     <p>Remarks: {data.remarks}</p>
   </div>
 </div>
