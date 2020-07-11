@@ -17,6 +17,12 @@
     showNotification = !showNotification;
   };
 
+  // about
+  const showAbout = () => {
+    showDropdown = false;
+    replace("/about");
+  };
+
   // signout
   const signout = () => {
     showDropdown = false;
@@ -46,10 +52,11 @@
 </div>
 
 <div
-  class="flex w-32 bg-foreground absolute right-0 mt-16 mr-4 {showDropdown ? 'visible' : 'hidden'}
-  justify-center py-4 cursor-pointer rounded-md"
-  on:click={signout}>
-  Signout
+  class="flex flex-col justify-center items-center w-32 bg-foreground absolute
+  right-0 mt-16 mr-4 {showDropdown ? 'visible' : 'hidden'} py-4 cursor-pointer
+  rounded-md">
+  <div on:click={showAbout}>About</div>
+  <div on:click={signout}>Signout</div>
 </div>
 
 <div

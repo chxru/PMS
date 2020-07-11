@@ -2,6 +2,7 @@
   import Router from "svelte-spa-router";
 
   // views
+  import About from "./views/About.svelte";
   import AddPatient from "./views/AddPatient.svelte";
   import CreateUser from "./views/CreateUser.svelte";
   import Home from "./views/Home.svelte";
@@ -15,6 +16,7 @@
   // routes
   const routes = {
     "/": Login,
+    "/about": About,
     "/addPatient": AddPatient,
     "/createUser": CreateUser,
     "/home": Home,
@@ -29,7 +31,7 @@
 
   // on route change
   let currentLocation = "Home";
-  const showSidebarOn = ["Home", "AddPatient", "Search"];
+  const showSidebarOn = ["Home", "AddPatient", "Search", "About"];
   const routeEvent = evt => {
     currentLocation = evt.detail.name;
   };
