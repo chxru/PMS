@@ -9,6 +9,7 @@
   import Search from "./views/Search.svelte";
 
   // components
+  import Topbar from "./components/topbar/Topbar.svelte";
   import Sidebar from "./components/sidebar/Sidebar.svelte";
 
   // routes
@@ -36,11 +37,12 @@
 
 <div class="relative flex flex-row w-full min-h-screen bg-background">
   {#if showSidebarOn.indexOf(currentLocation) != -1}
+    <Topbar />
     <Sidebar on:toggleSidebar={toggleSidebar} />
   {/if}
   <div
-    class=" w-full mt-8 pl-4 {showSidebarOn.indexOf(currentLocation) != -1 ? (sidebarExpanded ? 'ml-64' : 'ml-16') : 'ml-0'}
-    transition-all duration-300 ease-in-out">
+    class="w-full {showSidebarOn.indexOf(currentLocation) != -1 ? (sidebarExpanded ? 'ml-64 mt-16' : 'ml-16 mt-16') : 'ml-0 mt-0'}
+    transition-all duration-300 ease-in-out ">
     <Router {routes} on:routeLoaded={routeEvent} />
   </div>
 </div>

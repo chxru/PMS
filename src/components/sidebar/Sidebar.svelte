@@ -22,7 +22,7 @@
 <div
   class="flex flex-col overflow-hidden {showSidebar ? 'w-64 ' : 'w-16'} h-full
   bg-foreground transition-all duration-300 ease-in-out fixed shadow-lg
-  justify-between py-2 items-center">
+  justify-between py-2 items-center pt-12">
   <div>
     {#each menuItems as menuItem}
       <span
