@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, screen } = require("electron");
 const path = require("path");
 
 const {
@@ -40,9 +40,10 @@ ipcMain.on("search-by-name", (event, name) => searchByName(event, name));
 
 const createWindow = () => {
   // Create the browser window.
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width,
+    height,
     webPreferences: {
       nodeIntegration: true,
     },
