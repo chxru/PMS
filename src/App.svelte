@@ -10,6 +10,7 @@
 
   // components
   import Sidebar from "./components/sidebar/Sidebar.svelte";
+  import Topbar from "./components/topbar/Topbar.svelte";
 
   // routes
   const routes = {
