@@ -30,7 +30,10 @@
         on:click={() => {
           replace(menuItem.path);
         }}>
-        <img class="px-4" src="./icons/{menuItem.icon}.svg" alt="" />
+        <img
+          class="px-4 cursor-pointer"
+          src="./icons/{menuItem.icon}.svg"
+          alt={menuItem.display} />
         <p class={showSidebar ? 'block' : 'hidden'}>{menuItem.display}</p>
       </span>
     {/each}
