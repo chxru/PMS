@@ -7,12 +7,28 @@ const generateSalt = () => {
   return crypto.randomBytes(16).toString("hex");
 };
 
-exports.createUser = (password, callback) => {
-  let salt = generateSalt();
+const scryptPWD = (password, callback) => {
+  if (typeof password == "object") password = JSON.stringify(password);
+  const salt = generateSalt();
   crypto.scrypt(password, salt, 32, (err, derivedKey) => {
     if (err) throw err;
-    console.log(derivedKey.toString("hex"));
     callback(salt, derivedKey.toString("hex"));
+  });
+};
+
+exports.createSUser = (password, callback) => {
+  const masterKey = { value: generateSalt() };
+  scryptPWD(password, (salt, hash) => {
+    // encrypt masterkey
+    scryptPWD(masterKey, (mkeySalt, mkeyHash) => {
+      callback(salt, hash, mkeySalt, mkeyHash);
+    });
+  });
+};
+
+exports.createUser = (password, callback) => {
+  scryptPWD(password, (salt, hash) => {
+    callback(salt, hash);
   });
 };
 

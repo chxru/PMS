@@ -5,9 +5,11 @@
   import About from "./views/About.svelte";
   import AddPatient from "./views/AddPatient.svelte";
   import CreateUser from "./views/CreateUser.svelte";
+  import CreateSUser from "./views/CreateSUser.svelte";
   import Home from "./views/Home.svelte";
   import Login from "./views/Login.svelte";
   import Search from "./views/Search.svelte";
+  import SplashScreen from "./views/SplashScreen.svelte";
 
   // components
   import Topbar from "./components/topbar/Topbar.svelte";
@@ -15,11 +17,13 @@
 
   // routes
   const routes = {
-    "/": Login,
+    "/": SplashScreen,
     "/about": About,
     "/addPatient": AddPatient,
     "/createUser": CreateUser,
+    "/createSUser": CreateSUser,
     "/home": Home,
+    "/login": Login,
     "/search": Search
   };
 

@@ -1,5 +1,8 @@
 # Patient Tracking System
 
+**Note:
+This branch is abandoned. When I'm planning to create PMS my initial idea was to create a multi-user single database encrypted database. But later I understood that it would be a not necessary since the app is fully local-offline and will install in a single computer, a [multi-key encryption](https://crypto.stackexchange.com/questions/35616/multi-key-encryption) is a overkill and pointless. From now on, PMS is a single user application and aes encryption key will be user's password. But there are some code I did before taking this decision and here I preserve those code to remind myself mistakes I done in my past**
+
 This application is made to store information about small-medium sized patient group.
 
 Please note that this application is far away from full release. I'm consistently working on adding / improving features to this project.
@@ -7,10 +10,11 @@ Please note that this application is far away from full release. I'm consistentl
 Contributions are welcome!
 
 ### How to install
+
 1. Install [node.js](https://nodejs.org/en/download/)
 2. Clone the repo or download this [zip](https://github.com/CharukaHS/pts/archive/master.zip) file
 3. Open command prompt inside folder and type `npm install`
-4. For developing purpose, run `npm run start` 
+4. For developing purpose, run `npm run start`
 5. For compiled version, run `npm run make`. A setup will be created on `/out` folder
 
 ### TODO

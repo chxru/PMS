@@ -2,11 +2,11 @@ const { app, BrowserWindow, ipcMain, screen } = require("electron");
 const path = require("path");
 
 const {
-  addPatient,
   checkUnamePwd,
+  createSuperUser,
   createUser,
-  searchByName,
-} = require("./util");
+} = require("./util/user.js");
+const { addPatient, searchByName } = require("./util/patient.js");
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
@@ -35,6 +35,7 @@ For intial preview no super-user role will be created
 // ipc events
 ipcMain.on("add-patient", (event, doc) => addPatient(event, doc));
 ipcMain.on("check-uname-pwd", (event, doc) => checkUnamePwd(event, doc));
+ipcMain.on("create-super-user", (event, doc) => createSuperUser(event, doc));
 ipcMain.on("create-user", (event, doc) => createUser(event, doc));
 ipcMain.on("search-by-name", (event, name) => searchByName(event, name));
 
