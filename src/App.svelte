@@ -8,6 +8,7 @@
   import Home from "./views/Home.svelte";
   import Login from "./views/Login.svelte";
   import Search from "./views/Search.svelte";
+  import Splash from "./views/Splash.svelte";
 
   // components
   import Topbar from "./components/topbar/Topbar.svelte";
@@ -15,11 +16,12 @@
 
   // routes
   const routes = {
-    "/": Login,
+    "/": Splash,
     "/about": About,
     "/addPatient": AddPatient,
     "/createUser": CreateUser,
     "/home": Home,
+    "/login": Login,
     "/search": Search
   };
 

@@ -3,6 +3,7 @@ const path = require("path");
 
 const {
   addPatient,
+  appInit,
   checkUnamePwd,
   createUser,
   searchByName,
@@ -36,6 +37,7 @@ For intial preview no super-user role will be created
 ipcMain.on("add-patient", (event, doc) => addPatient(event, doc));
 ipcMain.on("check-uname-pwd", (event, doc) => checkUnamePwd(event, doc));
 ipcMain.on("create-user", (event, doc) => createUser(event, doc));
+ipcMain.on("app-init-req", (event) => appInit(event));
 ipcMain.on("search-by-name", (event, name) => searchByName(event, name));
 
 const createWindow = () => {

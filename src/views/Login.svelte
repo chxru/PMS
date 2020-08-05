@@ -5,8 +5,8 @@
   import Button from "smelte/src/components/Button";
   import TextField from "smelte/src/components/TextField";
 
-  let username = "test";
-  let password = "password";
+  let username = "";
+  let password = "";
   let errMsg = "";
 
   // ipc events
@@ -34,13 +34,5 @@
 
   <div class="py-2">
     <Button on:click={signInBtn}>Login</Button>
-  </div>
-  <div class="py-2">
-    <Button
-      on:click={() => {
-        replace('/createUser');
-      }}>
-      Create User
-    </Button>
   </div>
 </div>

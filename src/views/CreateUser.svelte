@@ -27,12 +27,4 @@
   <div class="py-2">
     <Button on:click={createUserBtn}>Create</Button>
   </div>
-  <div class="py-2">
-    <Button
-      on:click={() => {
-        replace('/');
-      }}>
-      Login
-    </Button>
-  </div>
 </div>
