@@ -4,22 +4,24 @@
   import { replace } from "svelte-spa-router";
   import Button from "smelte/src/components/Button";
   import TextField from "smelte/src/components/TextField";
+  import { newAlert } from "../store.js";
 
   let username = "";
   let password = "";
-  let errMsg = "";
 
   // ipc events
   ipcRenderer.on("checkedPwd", (evt, arg) => {
     if (arg) {
       replace("/home");
     } else {
-      errMsg = "Username password mismatch";
+      newAlert(
+        "Invalid username / password",
+        "Please recheck your username and password"
+      );
     }
   });
 
   const signInBtn = () => {
-    errMsg = "";
     ipcRenderer.send("check-uname-pwd", { username, password });
   };
 </script>
@@ -29,8 +31,6 @@
 
   <TextField label="Username" autocomplete="true" bind:value={username} />
   <TextField label="Password" type="password" bind:value={password} />
-
-  <p>{errMsg}</p>
 
   <div class="py-2">
     <Button on:click={signInBtn}>Login</Button>

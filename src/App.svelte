@@ -13,6 +13,7 @@
   // components
   import Topbar from "./components/topbar/Topbar.svelte";
   import Sidebar from "./components/sidebar/Sidebar.svelte";
+  import Alert from "./components/cards/Alert.svelte";
 
   // routes
   const routes = {
@@ -39,14 +40,17 @@
   };
 </script>
 
-<div class="relative flex flex-row w-full min-h-screen bg-background">
-  {#if showSidebarOn.indexOf(currentLocation) != -1}
-    <Topbar />
-    <Sidebar on:toggleSidebar={toggleSidebar} />
-  {/if}
-  <div
-    class="w-full {showSidebarOn.indexOf(currentLocation) != -1 ? (sidebarExpanded ? 'ml-64 mt-16' : 'ml-16 mt-16') : 'ml-0 mt-0'}
-    transition-all duration-300 ease-in-out ">
-    <Router {routes} on:routeLoaded={routeEvent} />
+<div class="relative flex flex-col w-full min-h-screen bg-background">
+  <div class="flex flex-row">
+    {#if showSidebarOn.indexOf(currentLocation) != -1}
+      <Topbar />
+      <Sidebar on:toggleSidebar={toggleSidebar} />
+    {/if}
+    <div
+      class="w-full {showSidebarOn.indexOf(currentLocation) != -1 ? (sidebarExpanded ? 'ml-64 mt-16' : 'ml-16 mt-16') : 'ml-0 mt-0'}
+      transition-all duration-300 ease-in-out ">
+      <Router {routes} on:routeLoaded={routeEvent} />
+    </div>
   </div>
+  <Alert />
 </div>
