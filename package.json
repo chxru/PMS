@@ -68,6 +68,7 @@
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@rollup/plugin-commonjs": "14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
+    "@tailwindcss/custom-forms": "^0.2.1",
     "electron": "9.2.0",
     "postcss-cli": "^7.1.1",
     "rollup": "^2.23.1",
