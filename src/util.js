@@ -6,7 +6,7 @@ const { createUser } = require("./database/crypto");
 exports.addPatient = (evt, doc) => {
   DB.PATIENT.insert(doc, (err, newDoc) => {
     if (err) throw err;
-    console.log(newDoc);
+    evt.reply("patient-add-res", err);
   });
 };
 

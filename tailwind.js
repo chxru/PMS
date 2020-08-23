@@ -13,9 +13,16 @@ module.exports = {
         "84": "21rem",
         "96": "24rem",
       },
+      customForms: (theme) => ({
+        default: {
+          select: {
+            icon: " ", // remove select icon
+          },
+        },
+      }),
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [require("@tailwindcss/custom-forms")],
   purge: false, // purging done by manually
 };
