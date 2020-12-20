@@ -1,5 +1,8 @@
 # Patient Tracking System
 
+**Note:**  
+**React + sqlite3 version of this project is being developed in [here](https://github.com/CharukaHS/PMS-electron)**
+
 This application is made to store information about small-medium sized patient group.
 
 Please note that this application is far away from full release. I'm consistently working on adding / improving features to this project.
